@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EduGenie is a focused AI study companion for understanding, practice, and progress.">
+  <title>EduGenie | Learn with momentum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="EduGenie home"><span class="brand-mark">E</span><span>EduGenie</span></a>
+      <div class="status"><span class="status-dot"></span><span>Study mode</span></div>
+    </header>
+    <main>
+      <section class="intro">
+        <p class="eyebrow">Your learning, made clearer</p>
+        <h1>Turn questions into <em>momentum.</em></h1>
+        <p class="lede">A calm, capable study companion for clear explanations, useful summaries, quick practice, and next steps.</p>
+      </section>
+      <section class="workspace" aria-label="Learning assistant">
+        <aside class="task-panel">
+          <p class="panel-label">Choose a task</p>
+          <div class="task-list" role="tablist" aria-label="Learning tasks">
+            <button class="task active" data-task="qa" role="tab" aria-selected="true"><span class="task-icon">?</span><span><strong>Ask a question</strong><small>Get a focused answer</small></span></button>
+            <button class="task" data-task="explain" role="tab" aria-selected="false"><span class="task-icon">◇</span><span><strong>Explain a concept</strong><small>Make difficult ideas click</small></span></button>
+            <button class="task" data-task="quiz" role="tab" aria-selected="false"><span class="task-icon">✓</span><span><strong>Generate a quiz</strong><small>Test what you know</small></span></button>
+            <button class="task" data-task="summarize" role="tab" aria-selected="false"><span class="task-icon">≡</span><span><strong>Summarize text</strong><small>Find the signal quickly</small></span></button>
+            <button class="task" data-task="learn" role="tab" aria-selected="false"><span class="task-icon">↗</span><span><strong>Build a learning path</strong><small>Know what to learn next</small></span></button>
+          </div>
+          <div class="panel-note"><span>✦</span><p>Powered by Gemini when your API key is configured. Offline mode is ready for exploring the interface.</p></div>
+        </aside>
+        <section class="work-area">
+          <div class="form-heading"><div><p class="panel-label">Now working on</p><h2 id="task-title">Ask a question</h2></div><span class="step">01 <i>/</i> 05</span></div>
+          <form id="assistant-form">
+            <label for="prompt" id="prompt-label">What would you like to understand?</label>
+            <textarea id="prompt" maxlength="12000" placeholder="Example: Why is the Pacific Ocean the largest ocean?" required></textarea>
+            <div class="form-options hidden" id="learning-options">
+              <label>Starting level<select id="level"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select></label>
+              <label>Hours per week<input id="weekly-hours" type="number" min="1" max="40" value="5"></label>
+            </div>
+            <div class="form-footer"><span class="hint" id="input-hint">Be specific for a more useful answer.</span><button class="submit-button" type="submit"><span id="submit-label">Ask EduGenie</span><span class="arrow">↗</span></button></div>
+          </form>
+          <div class="result-wrap" id="result-wrap" aria-live="polite">
+            <div class="result-empty" id="result-empty"><span class="spark">✦</span><p>Your response will appear here.</p></div>
+            <div class="result hidden" id="result"><div class="result-meta"><span class="result-title">EduGenie response</span><span class="source-badge" id="source-badge"></span></div><div id="result-content"></div></div>
+          </div>
+        </section>
+      </section>
+    </main>
+    <footer><span>EDUGENIE / LEARNING ASSISTANT</span><span>Built for curious minds</span></footer>
+  </div>
+  <script src="{{ url_for('static', path='app.js') }}"></script>
+</body>
+</html>
